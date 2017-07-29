@@ -5,5 +5,30 @@
 */
 
 $(function(){
-	console.log('Loading OK :)');
+	var $startDate 			= $('#startDate'),
+		$endDate			= $('#endDate'),
+		$numberOfDays 		= $('#numberOfDays'),
+		$countryCode 		= $('#countryCode'),
+		componentSelector 	= '.c-calendar';
+
+	$.numberEightCalendar = {
+		setLastDate: function(){
+			var lastDate = $startDate.datepicker('getDate');
+
+			lastDate.setDate(lastDate.getDate() + parseInt($numberOfDays.val()));
+			$endDate.datepicker('setDate', lastDate);
+		}
+	};
+
+	$startDate.add($endDate).datepicker({
+		onSelect: function(){
+			if($(this).attr('id') == 'startDate'){
+				$.numberEightCalendar.setLastDate();
+			}
+		}
+	});
+
+	$numberOfDays.on('change keyup', function(){
+		$.numberEightCalendar.setLastDate();
+	});
 });
