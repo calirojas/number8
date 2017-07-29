@@ -3,5 +3,9 @@ $wrapper: 'c-calendar-wrapper';
 .#{$wrapper}{
 	&.container{
 		width: 500px;
+
+		@media(max-width: 768px){
+			width: auto;
+		}
 	}
 }
