@@ -1,0 +1,7 @@
+$wrapper: 'c-calendar-wrapper';
+
+.#{$wrapper}{
+	&.container{
+		width: 500px;
+	}
+}
