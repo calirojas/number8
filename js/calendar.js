@@ -55,6 +55,15 @@ $(function(){
 						$this.remove();
 					}
 				});
+
+			//remove possible empty months
+				$(componentSelector + ' .ui-datepicker-group').each(function(){
+					var $this = $(this);
+
+					if($this.find('table.ui-datepicker-calendar tbody tr').length == 0){
+						$this.closest('.ui-datepicker-row-break').remove().end().remove();
+					}
+				});
 			}
 		}
 	};
