@@ -1,14 +1,15 @@
 $wrapper: 'c-calendar-wrapper';
 
 .#{$wrapper}{
-	$weekends	: yellow;
-	$day		: greenyellow;
-	$color		: navy;
+	$weekends	: #ffff00;
+	$day		: #adff2f;
+	$color		: #000080;
 	$disabled	: #ccc;
 	$header-bg	: #fff;
 
 	&.container{
 		width: 500px;
+		margin: 40px auto;
 
 		@media(max-width: 768px){
 			width: auto;
