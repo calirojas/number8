@@ -10,7 +10,11 @@ $(function(){
 		$endDate			= $('#endDate'),
 		$numberOfDays 		= $('#numberOfDays'),
 		$countryCode 		= $('#countryCode'),
-		componentSelector 	= '.c-calendar';
+		componentSelector 	= '.c-calendar',
+		HOLIDAYS_API		= {
+			URL: 	'https://holidayapi.com/v1/holidays',
+			KEY: 	'64957f90-49fd-4fdd-a81d-08d23ea8d372'
+		};
 
 //main object
 	$.numberEightCalendar = {
@@ -65,6 +69,21 @@ $(function(){
 					}
 				});
 			}
+		},
+	//get holidays using provided api
+		getHolidays: function(theYear){
+			$.ajax({
+				url		: HOLIDAYS_API.URL,
+				data: {
+					key		: HOLIDAYS_API.KEY,
+					country	:	$countryCode.val() || 'US',
+					year	: theYear
+				},
+				dataType: 'json',
+				success	: function(data){
+					console.log(data);
+				}
+			});
 		}
 	};
 
