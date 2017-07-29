@@ -33,17 +33,29 @@ $(function(){
 
 				return months <= 0 ? 1 : months + 2;
 		},
-	//generate the calendar (1 to monthsToShow)
+	//generate the calendar
 		createCalendar: function(){
 			var $selector = $(componentSelector);
 
-			$selector.datepicker('destroy').datepicker({
-				minDate				: $.datepicker.parseDate($.datepicker._defaults.dateFormat, $startDate.val()),
-				maxDate				: $.datepicker.parseDate($.datepicker._defaults.dateFormat, $endDate.val()),
-				dayNamesMin			: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
-				numberOfMonths		: [parseInt($.numberEightCalendar.monthsToShow()), 1],
-				hideIfNoPrevNext	: true
-			});
+			if(parseInt($numberOfDays.val()) >= 0){
+			//add the months (1 to monthsToShow)
+				$selector.datepicker('destroy').datepicker({
+					minDate				: $.datepicker.parseDate($.datepicker._defaults.dateFormat, $startDate.val()),
+					maxDate				: $.datepicker.parseDate($.datepicker._defaults.dateFormat, $endDate.val()),
+					dayNamesMin			: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+					numberOfMonths		: [parseInt($.numberEightCalendar.monthsToShow()), 1],
+					hideIfNoPrevNext	: true
+				});
+
+			//remove unused rows from each month
+				$selector.find('table.ui-datepicker-calendar tr').each(function(){
+					var $this = $(this);
+
+					if($this.find('td.ui-state-disabled').length == 7){
+						$this.remove();
+					}
+				});
+			}
 		}
 	};
 
