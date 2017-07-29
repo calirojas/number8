@@ -12,4 +12,4 @@ The key could be replaced in js/calendar.js : HOLIDAYS_API.KEY
 
 ## Errors
 There's a problem (counting the days) with the example received. Please, see the image:
-http://calirojas.com/img/error.png
+http://calirojas.com/8/img/error.png
