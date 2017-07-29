@@ -1,11 +1,61 @@
 $wrapper: 'c-calendar-wrapper';
 
 .#{$wrapper}{
+	$weekends	: yellow;
+	$day		: greenyellow;
+	$color		: navy;
+	$disabled	: #ccc;
+	$header-bg	: #fff;
+
 	&.container{
 		width: 500px;
 
 		@media(max-width: 768px){
 			width: auto;
+		}
+	}
+
+	.c-calendar{
+		user-select: none;
+
+		table{
+			pointer-events: none;
+		}
+
+		.ui-datepicker-inline{
+			width: 100%;
+		}
+
+		.ui-datepicker-group{
+			float: initial;
+		}
+
+		a.ui-state-default{
+			text-align: center;
+			background: $day;
+			color: $color;
+		}
+
+		.ui-state-disabled{
+			background: $disabled;
+
+			.ui-state-default{
+				background: $disabled;
+				color: $disabled;
+			}
+		}
+
+		.ui-widget-header{
+			background: $header-bg;
+			border: 0;
+		}
+		.ui-datepicker-week-end a.ui-state-default{
+			background: $weekends;
+		}
+
+		.ui-widget.ui-widget-content{
+			border: 0;
+			padding: 0;
 		}
 	}
 }
