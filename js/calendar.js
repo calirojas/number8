@@ -17,6 +17,16 @@ $(function(){
 
 			lastDate.setDate(lastDate.getDate() + parseInt($numberOfDays.val()));
 			$endDate.datepicker('setDate', lastDate);
+		},
+		monthsToShow: function(){
+			var startDate 	= new Date($startDate.val()),
+				endDate		= new Date($endDate.val()),
+				months 		= (endDate.getFullYear() - startDate.getFullYear()) * 12;
+
+				months -= startDate.getMonth() + 1;
+				months += endDate.getMonth() + 1;
+
+				return months <= 0 ? 1 : months + 1;
 		}
 	};
 
